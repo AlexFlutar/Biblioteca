@@ -1,7 +1,6 @@
 package repository.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
+import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
@@ -25,4 +24,5 @@ public class EntityPerson extends BaseEntityPerson {
     @Column(name = "last_name")
     @NonNull
     private String lastName;
+
 }
