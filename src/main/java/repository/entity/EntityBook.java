@@ -1,20 +1,22 @@
 package repository.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
-import repository.entity.base.BaseEntityBook;
+import repository.entity.base.BaseEntity;
 
 @Entity(name = "Book")
 @Data
 @NoArgsConstructor
 @RequiredArgsConstructor
-public class EntityBook extends BaseEntityBook {
+public class EntityBook {
+
+    @Id // primary key
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "book_id")
+    protected Integer bookId;
 
     @Column(name = "title")
     @NonNull
@@ -29,6 +31,7 @@ public class EntityBook extends BaseEntityBook {
     private String genre;
 
     @ManyToOne
-    @JoinColumn(name="Person_cnp")
-    EntityRentBooks entityRentBooks;
+    @JoinColumn(name = "person_id")
+    EntityPerson person;
+
 }
