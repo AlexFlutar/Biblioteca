@@ -5,17 +5,24 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
-import repository.entity.base.BaseEntityPerson;
+import repository.entity.base.BaseEntity;
+
+import java.util.List;
 
 @Entity(name = "Person")
 @Data
 @NoArgsConstructor
 @RequiredArgsConstructor
-public class EntityPerson extends BaseEntityPerson {
+public class EntityPerson  {
+
+    @Id // primary key
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "person_id")
+    protected Integer personId;
 
     @Column(name = "cnp")
     @NonNull
-    private int cnp;
+    private String cnp;
 
     @Column(name = "first_name")
     @NonNull
@@ -24,5 +31,8 @@ public class EntityPerson extends BaseEntityPerson {
     @Column(name = "last_name")
     @NonNull
     private String lastName;
+
+    @OneToMany(mappedBy = "person")
+    List<EntityBook> bookList;
 
 }
