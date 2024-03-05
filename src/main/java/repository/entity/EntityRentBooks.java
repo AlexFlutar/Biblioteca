@@ -3,8 +3,8 @@ package repository.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
-import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
@@ -22,6 +22,6 @@ public class EntityRentBooks {
     private List<EntityBook> entityBookList;
 
     @Column(name = "rent_time_days")
-    @NotNull
+    @NonNull
     int days;
 }
