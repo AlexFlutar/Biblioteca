@@ -1,5 +1,7 @@
-<<<<<<< HEAD
 package repository.entity;
+
+
+
 
 import jakarta.persistence.*;
 import lombok.Data;
@@ -26,7 +28,7 @@ public class EntityRentBooks {
     @NonNull
     int days;
 }
-=======
+
 //package repository.entity;
 //
 //import jakarta.persistence.*;
@@ -54,4 +56,4 @@ public class EntityRentBooks {
 //    @NotNull
 //    int days;
 //}
->>>>>>> fca0239bfbad42a18892b306be35f1185ad8ab15
+

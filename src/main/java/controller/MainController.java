@@ -18,13 +18,13 @@ public class MainController {
                 .addAnnotatedClass(EntityPerson.class)
                 .buildSessionFactory();
 
-//        Scanner scanner = new Scanner(System.in);
-//
-//        String title = scanner.next();
-//        String author = scanner.next();
-//        String genre = scanner.next();
-//        BookService bookService = new BookServiceImpl();
-//
-//        bookService.save(new EntityBook(title, author, genre));
+        Scanner scanner = new Scanner(System.in);
+
+        String title = scanner.next();
+        String author = scanner.next();
+        String genre = scanner.next();
+        BookService bookService = new BookServiceImpl();
+
+        bookService.save(new EntityBook(title, author, genre));
     }
 }
