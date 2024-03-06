@@ -31,7 +31,7 @@ public class MainController {
 
         personService.save(new EntityPerson(cnp, firstName, lastName));
 
-        bookService.save(entityBook);
+        bookService.save(new EntityBook("Harry Potter", "J. K. Rowling", "Fantasy"));
         bookService.save(new EntityBook("White Fang", "Jack London", "Adventure fiction"));
         bookService.save(new EntityBook("All souls", "Michael Patrick MacDonald", "Biographical Fiction"));
         bookService.save(new EntityBook("Dune", "Frank Herbert", "Science Fiction"));
