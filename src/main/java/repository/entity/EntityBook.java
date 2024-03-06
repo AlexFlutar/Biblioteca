@@ -1,16 +1,11 @@
 package repository.entity;
 
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
 import repository.entity.base.BaseEntity;
 
 @Entity(name = "Book")
-@Data
-@NoArgsConstructor
-@RequiredArgsConstructor
+
 public class EntityBook {
 
     @Id // primary key
@@ -32,6 +27,48 @@ public class EntityBook {
 
     @ManyToOne
     @JoinColumn(name = "person_id")
-    EntityPerson person;
+    private EntityPerson person;
 
+    public EntityBook(String title, String author, String genre) {
+        this.title = title;
+        this.author = author;
+        this.genre = genre;
+    }
+
+    public EntityPerson getPerson() {
+        return person;
+    }
+
+    public void setPerson(EntityPerson person) {
+        this.person = person;
+    }
+
+    public Integer getBookId() {
+        return bookId;
+    }
+
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public String getGenre() {
+        return genre;
+    }
+
+    public void setGenre(String genre) {
+        this.genre = genre;
+    }
 }

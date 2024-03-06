@@ -1,10 +1,7 @@
 package repository.entity;
 
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
 import repository.entity.base.BaseEntity;
 
 import java.util.List;
@@ -13,6 +10,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @RequiredArgsConstructor
+@ToString
 public class EntityPerson  {
 
     @Id // primary key
@@ -35,4 +33,10 @@ public class EntityPerson  {
     @OneToMany(mappedBy = "person")
     List<EntityBook> bookList;
 
+    public EntityPerson(Integer personId, @NonNull String cnp, @NonNull String firstName, @NonNull String lastName) {
+        this.personId = personId;
+        this.cnp = cnp;
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
 }
