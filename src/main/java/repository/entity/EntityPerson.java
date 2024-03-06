@@ -33,10 +33,4 @@ public class EntityPerson  {
     @OneToMany(mappedBy = "person")
     List<EntityBook> bookList;
 
-    public EntityPerson(Integer personId, @NonNull String cnp, @NonNull String firstName, @NonNull String lastName) {
-        this.personId = personId;
-        this.cnp = cnp;
-        this.firstName = firstName;
-        this.lastName = lastName;
-    }
 }

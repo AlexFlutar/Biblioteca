@@ -9,6 +9,7 @@ import service.PersonService;
 import service.impl.BookServiceImpl;
 import service.impl.PersonServiceImpl;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class MainController {
@@ -26,10 +27,8 @@ public class MainController {
         PersonService personService = new PersonServiceImpl();
         BookService bookService = new BookServiceImpl();
 
-        EntityBook entityBook = new EntityBook("Harry Potter", "J. K. Rowling", "Fantasy");
-        entityBook.setPerson(new EntityPerson(15, cnp, firstName, lastName));
-
-        personService.save(new EntityPerson(cnp, firstName, lastName));
+        EntityPerson entityPerson = new EntityPerson(cnp, firstName, lastName);
+        personService.save(entityPerson);
 
         bookService.save(new EntityBook("Harry Potter", "J. K. Rowling", "Fantasy"));
         bookService.save(new EntityBook("White Fang", "Jack London", "Adventure fiction"));
@@ -37,10 +36,31 @@ public class MainController {
         bookService.save(new EntityBook("Dune", "Frank Herbert", "Science Fiction"));
         bookService.save(new EntityBook("Lord of The Rings", "J. R. R. Tolkien", "Fantasy"));
 
+
         System.out.println("Books available: ");
 
-        System.out.println(bookService.findAll());
         System.out.println(bookService.findById(1));
+        System.out.println(bookService.findById(2));
+        System.out.println(bookService.findById(3));
+        System.out.println(bookService.findById(4));
+        System.out.println(bookService.findById(5));
+
+
+        int i = 0;
+        boolean chooseBooks = true;
+        while (chooseBooks == true || i < 5 ){
+            System.out.println("Choose books by id! ");
+            i++;
+            int id = scanner.nextInt();
+            System.out.println("Book you borrowed is: " + bookService.findById(id));
+            System.out.println("Continue? Please answer with yes or no.");
+            String answer = scanner.next();
+            if (answer.equals("yes"))
+                chooseBooks = true;
+            else
+                chooseBooks = false;
+
+        }
 
 
 
