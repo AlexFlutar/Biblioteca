@@ -1,5 +1,6 @@
 package repository.entity;
 
+import com.sun.istack.NotNull;
 import jakarta.persistence.*;
 import lombok.*;
 import repository.entity.base.BaseEntity;
@@ -27,6 +28,10 @@ public class EntityBook {
     @Column(name = "genre")
     @NonNull
     private String genre;
+
+    @Column(name = "availability")
+    @NotNull
+    private boolean availability;
 
     @ManyToOne
     @JoinColumn(name = "person_id")

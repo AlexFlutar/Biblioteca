@@ -108,7 +108,7 @@ public class BookDAOImpl extends BaseDao implements BookDAO {
             }
 
             // sql command
-            resultList = entityManager.createQuery("FROM EntityBook", EntityBook.class).getResultList();
+            resultList = entityManager.createNativeQuery("SELECT * FROM Book1", EntityBook.class).getResultList();
 
             // commit command
             transaction.commit();
