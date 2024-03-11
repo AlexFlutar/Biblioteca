@@ -29,9 +29,6 @@ public class EntityBook {
     @NonNull
     private String genre;
 
-    @Column(name = "availability")
-    @NotNull
-    private boolean availability;
 
     @ManyToOne
     @JoinColumn(name = "person_id")

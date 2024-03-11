@@ -46,11 +46,37 @@ public class MainController {
             j++;
         }
 
+        boolean addBooks = true;
+        while (addBooks) {
+            System.out.println("Do you wish to add more books to the database? Please answer with yes or no.");
+            String answer = scanner.next();
+            if (answer.equalsIgnoreCase("yes")) {
+                System.out.println("Please insert the title of the book!");
+                String title = scanner.next();
+                System.out.println("Please insert the author of the book!");
+                String author = scanner.next();
+                System.out.println("Please insert the genre of the book!");
+                String genre = scanner.next();
+                bookService.save(new EntityBook(title, author, genre));
+                bookList.add(new EntityBook(title, author, genre));
+            }
+            else
+                break;
+
+        }
+        System.out.println("Books available: ");
+
+//        System.out.println(bookService.findAll());
+        int index = 1;
+        for (EntityBook book : bookList) {
+            System.out.println(bookService.findById(index));
+            index++;
+        }
 
         int i = 0;
         boolean chooseBooks = true;
         while (chooseBooks) {
-            System.out.println("Choose books by id! ");
+            System.out.println("Choose books to borrow by id! ");
             i++;
             int id = scanner.nextInt();
             System.out.println("Book you borrowed is: " + bookService.findById(id));
@@ -69,16 +95,16 @@ public class MainController {
 
 
     private static void addBooks(BookService bookService, List<EntityBook> bookList) {
-        bookService.save(new EntityBook("Harry Potter", "J. K. Rowling", "Fantasy", true));
-        bookList.add(new EntityBook("Harry Potter", "J. K. Rowling", "Fantasy", true));
-        bookService.save(new EntityBook("White Fang", "Jack London", "Adventure fiction", true));
-        bookList.add(new EntityBook("White Fang", "Jack London", "Adventure fiction", true));
-        bookService.save(new EntityBook("All souls", "Michael Patrick MacDonald", "Biographical Fiction", true));
-        bookList.add(new EntityBook("All souls", "Michael Patrick MacDonald", "Biographical Fiction", true));
-        bookService.save(new EntityBook("Dune", "Frank Herbert", "Science Fiction", true));
-        bookList.add(new EntityBook("Dune", "Frank Herbert", "Science Fiction", true));
-        bookService.save(new EntityBook("Lord of The Rings", "J. R. R. Tolkien", "Fantasy", true));
-        bookList.add(new EntityBook("Lord of The Rings", "J. R. R. Tolkien", "Fantasy", true));
+        bookService.save(new EntityBook("Harry Potter", "J. K. Rowling", "Fantasy"));
+        bookList.add(new EntityBook("Harry Potter", "J. K. Rowling", "Fantasy"));
+        bookService.save(new EntityBook("White Fang", "Jack London", "Adventure fiction"));
+        bookList.add(new EntityBook("White Fang", "Jack London", "Adventure fiction"));
+        bookService.save(new EntityBook("All souls", "Michael Patrick MacDonald", "Biographical Fiction"));
+        bookList.add(new EntityBook("All souls", "Michael Patrick MacDonald", "Biographical Fiction"));
+        bookService.save(new EntityBook("Dune", "Frank Herbert", "Science Fiction"));
+        bookList.add(new EntityBook("Dune", "Frank Herbert", "Science Fiction"));
+        bookService.save(new EntityBook("Lord of The Rings", "J. R. R. Tolkien", "Fantasy"));
+        bookList.add(new EntityBook("Lord of The Rings", "J. R. R. Tolkien", "Fantasy"));
     }
 
 
