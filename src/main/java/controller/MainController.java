@@ -20,17 +20,30 @@ public class MainController {
 
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Please insert personal number: ");
-        String cnp = scanner.next();
-        System.out.println("Please insert first name: ");
-        String firstName = scanner.next();
-        System.out.println("Please insert last name: ");
-        String lastName = scanner.next();
+
         PersonService personService = new PersonServiceImpl();
         BookService bookService = new BookServiceImpl();
 
-        EntityPerson entityPerson = new EntityPerson(cnp, firstName, lastName);
-        personService.save(entityPerson);
+
+
+        boolean retry = false;
+        do {
+            System.out.println("Please insert personal number: ");
+            String cnp = scanner.next();
+            System.out.println("Please insert first name: ");
+            String firstName = scanner.next();
+            System.out.println("Please insert last name: ");
+            String lastName = scanner.next();
+            EntityPerson entityPerson = new EntityPerson(cnp, firstName, lastName);
+            try {
+                personService.save(entityPerson);
+                break;
+            } catch (IncorrectCnpException e) {
+                    retry = true;
+                System.out.println("Invalid cnp! Please retry!");
+            }
+        } while (retry);
+
 
         List<EntityBook> bookList = new ArrayList<>();
 

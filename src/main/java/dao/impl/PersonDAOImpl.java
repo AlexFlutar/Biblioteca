@@ -1,5 +1,6 @@
 package dao.impl;
 
+import controller.IncorrectCnpException;
 import dao.BookDAO;
 import dao.PersonDAO;
 import dao.base.BaseDao;
@@ -18,7 +19,11 @@ public class PersonDAOImpl extends BaseDao implements PersonDAO {
     }
 
     @Override
-    public EntityPerson save(EntityPerson person) {
+    public EntityPerson save(EntityPerson person) throws IncorrectCnpException {
+
+        if (person.getCnp().length() != 13){
+            throw new IncorrectCnpException(("Invalid cnp! Please retry!"));
+        }
         EntityTransaction transaction = null;
         try {
             // check transaction is in place
@@ -97,7 +102,7 @@ public class PersonDAOImpl extends BaseDao implements PersonDAO {
     }
 
     @Override
-    public List<EntityPerson> findAll() {
+    public List<EntityPerson> findAll()  {
         EntityTransaction transaction = null;
         List<EntityPerson> resultList = new ArrayList<>();
 

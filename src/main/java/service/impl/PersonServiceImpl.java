@@ -1,6 +1,7 @@
 package service.impl;
 
 
+import controller.IncorrectCnpException;
 import dao.PersonDAO;
 import dao.impl.PersonDAOImpl;
 import repository.entity.EntityBook;
@@ -20,7 +21,7 @@ public class PersonServiceImpl extends BaseService implements PersonService {
         this.personDAO = new PersonDAOImpl(sessionFactory.createEntityManager());
     }
     @Override
-    public EntityPerson save(EntityPerson person) {
+    public EntityPerson save(EntityPerson person) throws IncorrectCnpException {
         return this.personDAO.save(person);
     }
 
