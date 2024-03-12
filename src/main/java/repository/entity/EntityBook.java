@@ -29,9 +29,9 @@ public class EntityBook {
     @NonNull
     private String genre;
 
-
-    @ManyToOne
-    @JoinColumn(name = "person_id")
-    private EntityPerson person;
+    @Getter
+    @Column(name = "availability")
+    @NonNull
+    private boolean availability;
 
 }

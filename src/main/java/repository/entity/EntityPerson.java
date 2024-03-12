@@ -31,7 +31,5 @@ public class EntityPerson  {
     @NonNull
     private String lastName;
 
-    @OneToMany(mappedBy = "person")
-    List<EntityBook> bookList;
 
 }
